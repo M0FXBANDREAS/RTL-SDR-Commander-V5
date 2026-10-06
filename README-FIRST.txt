@@ -1,5 +1,12 @@
-HamTech RTL Comander V16 - RTL-SDR Blog V4
+HamTech RTL Comander V17 - RTL-SDR Blog V4
 ======================================
+
+V17 FM / NFM 25 kHz FILTER
+FM/NFM now offers 8, 12.5, 16 and 25 kHz receive filters. When entering
+FM from another mode, the default filter is 25 kHz. The Marine UK preset
+also selects 25 kHz. PMR UK continues to select its 12.5 kHz filter.
+The backend accepts and applies the full 25 kHz channel filter.
+The existing 32 kHz audio / 48 kHz playback rates are unchanged.
 
 V16 READABLE DROPDOWNS
 Every dropdown and its option list now uses black text on a light
@@ -32,7 +39,7 @@ V13 FREQUENCY DISPLAY AND UK PRESETS
 The main frequency fills its black panel and automatically scales to fit
 HF/VHF/UHF values. Mouse-wheel tuning and click-to-edit still work. The
 unused TX square is removed; VFO swap and RX ONLY remain.
-MARINE UK tunes channel 16 (156.800 MHz), selects FM/NFM, 16 kHz filter
+MARINE UK tunes channel 16 (156.800 MHz), selects FM/NFM, 25 kHz filter
 and 25 kHz tuning step, and opens a common voice-channel chooser.
 Channel 80 includes separate ship (157.025) and shore (161.625 MHz) presets.
 PMR UK tunes analogue channel 1 (446.006250 MHz), selects FM/NFM, 12.5 kHz

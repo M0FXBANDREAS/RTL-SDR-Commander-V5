@@ -24,7 +24,7 @@ CONFIG = web.AppKey('config',dict)
 def validate(value):
     if not isinstance(value,dict): raise ValueError('Invalid controls')
     s=dict(freq=int(value.get('freq',4006934)),mode=value.get('mode','LSB'),bandwidth=int(value.get('bandwidth',2400)),gain=int(value.get('gain',372)),agc=bool(value.get('agc',True)),squelch=float(value.get('squelch',-100)),ppm=int(value.get('ppm',0)),anf=bool(value.get('anf',False)),notch=bool(value.get('notch',False)),notch_hz=int(value.get('notch_hz',1000)),notch_width=int(value.get('notch_width',80)),nb=bool(value.get('nb',False)),nr=bool(value.get('nr',False)),nb_strength=int(value.get('nb_strength',50)),nr_strength=int(value.get('nr_strength',40)))
-    limits={'LSB':(1800,3000),'USB':(1800,3000),'CW':(250,1000),'AM':(5000,12000),'NFM':(8000,16000),'WFM':(150000,200000)}
+    limits={'LSB':(1800,3000),'USB':(1800,3000),'CW':(250,1000),'AM':(5000,12000),'NFM':(8000,25000),'WFM':(150000,200000)}
     if s['mode'] not in limits or not 500000<=s['freq']<=1766000000 or s['gain'] not in GAINS or not -100<=s['squelch']<=-20 or not -200<=s['ppm']<=200: raise ValueError('Control outside receiver range')
     if not 100<=s['notch_hz']<=12000 or not 20<=s['notch_width']<=500:raise ValueError('Notch settings outside range')
     if not 0<=s['nb_strength']<=100 or not 0<=s['nr_strength']<=100:raise ValueError('Noise strength outside range')
@@ -222,7 +222,7 @@ def create_app(device,port=8765):
 if __name__=='__main__':
     try:device=USB()
     except Exception as e:raise SystemExit(str(e))
-    print('HamTech V16: asynchronous USB capture + independent DSP + 48 kHz audio')
+    print('HamTech V17: asynchronous USB capture + independent DSP + 48 kHz audio')
     print('Open http://127.0.0.1:8765 . Press POWER to enable audio.')
     app=create_app(device)
     async def open_browser(app):asyncio.get_running_loop().call_later(1,webbrowser.open,'http://127.0.0.1:8765')
